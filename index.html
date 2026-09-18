@@ -8,11 +8,11 @@
     <style>
         /* --- تعریف پالت رنگی --- */
         :root {
-            --bg-color: #f0f4f8;          /* رنگ پس‌زمینه کل صفحه */
-            --card-bg: #ffffff;           /* رنگ پس‌زمینه کارت‌ها */
-            --text-dark: #1e293b;         /* رنگ متن اصلی */
-            --primary: #6366f1;           /* رنگ اصلی (بنفش آبی) */
-            --border-color: #e2e8f0;      /* رنگ حاشیه‌ها */
+            --bg-color: #f0f4f8;
+            --card-bg: #ffffff;
+            --text-dark: #1e293b;
+            --primary: #6366f1;
+            --border-color: #e2e8f0;
         }
 
         * {
@@ -30,13 +30,12 @@
             align-items: center;
             min-height: 100vh;
             padding: 2vh;
-            overflow: hidden;
+            overflow-x: hidden; /* جلوگیری از اسکرول افقی */
         }
 
         .container {
             width: 100%;
             max-width: 1400px;
-            height: 96vh;
             display: flex;
             flex-direction: column;
             gap: 2.5vh;
@@ -52,7 +51,7 @@
             justify-content: center;
             align-items: center;
             text-align: center;
-            padding: 1vh;
+            padding: 15px;
             overflow: hidden;
             transition: all 0.3s ease;
         }
@@ -61,22 +60,20 @@
         .box img {
             width: 100%;
             height: 100%;
-            /* این خط جادویی باعث می‌شود عکس به طور کامل دیده شود و برش نخورد */
-            object-fit: contain; 
+            object-fit: contain; /* عکس کامل دیده می‌شود */
         }
 
-        /* --- ردیف اول: هدر --- */
+        /* --- ردیف اول: هدر (دسکتاپ) --- */
         .header-row {
             display: flex;
             gap: 2.5vh;
             height: 25vh;
-            flex-shrink: 0;
         }
 
         .profile-box {
             width: 15%;
             border: 3px solid var(--primary);
-            background-color: #f8fafc; /* پس‌زمینه ملایم برای کادر عکس */
+            background-color: #f8fafc;
         }
 
         .welcome-box {
@@ -100,17 +97,16 @@
             margin-top: 10px;
         }
 
-        /* --- ردیف‌های کارت‌ها --- */
+        /* --- ردیف‌های کارت‌ها (دسکتاپ) --- */
         .cards-row {
             display: flex;
             gap: 2.5vh;
             height: 32vh;
-            flex-shrink: 0;
         }
 
         .gif-box {
             width: 15%;
-            background-color: #f8fafc; /* پس‌زمینه ملایم برای کادر گیف */
+            background-color: #f8fafc;
         }
 
         .course-box {
@@ -148,18 +144,59 @@
             transform: scaleX(1);
         }
 
-        /* --- واکنش‌گرایی برای موبایل --- */
+        /* ========================================= */
+        /* --- تنظیمات موبایل (ریسپانسیو) --- */
+        /* ========================================= */
         @media (max-width: 768px) {
-            body { overflow: auto; padding: 10px; }
-            .container { height: auto; }
-            .header-row, .cards-row { flex-direction: column; height: auto; }
-            .profile-box, .gif-box, .welcome-box, .course-box {
-                width: 100%;
-                height: 25vh;
-                font-size: 18px;
+            body {
+                padding: 15px;
+                align-items: flex-start;
             }
-            .welcome-box { font-size: 20px; padding: 20px; }
-            .welcome-box span { font-size: 16px; }
+
+            .container {
+                gap: 15px;
+            }
+
+            /* --- هدر در موبایل --- */
+            .header-row {
+                flex-direction: column; /* عمودی شدن */
+                height: auto;
+                gap: 15px;
+            }
+
+            .profile-box {
+                width: 100%; /* عکس تمام عرض */
+                height: 200px; /* ارتفاع ثابت برای عکس */
+            }
+
+            .welcome-box {
+                font-size: 20px;
+                padding: 20px;
+                line-height: 1.6;
+            }
+
+            .welcome-box span {
+                font-size: 16px;
+                margin-top: 8px;
+            }
+
+            /* --- کارت‌ها در موبایل --- */
+            .cards-row {
+                flex-direction: column; /* عمودی شدن */
+                height: auto;
+                gap: 15px;
+            }
+
+            .gif-box {
+                width: 100%;
+                height: 200px; /* ارتفاع ثابت برای گیف */
+            }
+
+            .course-box {
+                width: 100%;
+                height: 80px; /* ارتفاع مناسب برای دکمه‌ها */
+                font-size: 18px; /* فونت خوانا */
+            }
         }
     </style>
 </head>
@@ -170,7 +207,6 @@
         <!-- ردیف اول: عکس پروفایل و متن خوش‌آمدگویی -->
         <div class="header-row">
             <div class="box profile-box">
-                <!-- عکس با ویژگی contain نمایش داده می‌شود تا کامل دیده شود -->
                 <img src="1.jpg" alt="عکس احمد مهرجو">
             </div>
             <div class="box welcome-box">
