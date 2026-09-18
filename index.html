@@ -8,11 +8,11 @@
     <style>
         /* --- تعریف پالت رنگی --- */
         :root {
-            --bg-color: #f0f4f8;
-            --card-bg: #ffffff;
-            --text-dark: #1e293b;
-            --primary: #6366f1;
-            --border-color: #e2e8f0;
+            --bg-color: #f0f4f8;          /* رنگ پس‌زمینه کل صفحه */
+            --card-bg: #ffffff;           /* رنگ پس‌زمینه کارت‌ها */
+            --text-dark: #1e293b;         /* رنگ متن اصلی */
+            --primary: #6366f1;           /* رنگ اصلی (بنفش آبی) */
+            --border-color: #e2e8f0;      /* رنگ حاشیه‌ها */
         }
 
         * {
@@ -42,6 +42,7 @@
             gap: 2.5vh;
         }
 
+        /* --- تنظیمات عمومی کادرها --- */
         .box {
             background-color: var(--card-bg);
             border-radius: 16px;
@@ -56,12 +57,15 @@
             transition: all 0.3s ease;
         }
 
+        /* --- تنظیمات عکس‌ها و گیف‌ها --- */
         .box img {
             width: 100%;
             height: 100%;
-            object-fit: cover;
+            /* این خط جادویی باعث می‌شود عکس به طور کامل دیده شود و برش نخورد */
+            object-fit: contain; 
         }
 
+        /* --- ردیف اول: هدر --- */
         .header-row {
             display: flex;
             gap: 2.5vh;
@@ -72,6 +76,7 @@
         .profile-box {
             width: 15%;
             border: 3px solid var(--primary);
+            background-color: #f8fafc; /* پس‌زمینه ملایم برای کادر عکس */
         }
 
         .welcome-box {
@@ -83,7 +88,7 @@
             color: var(--text-dark);
             background: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%);
             display: flex;
-            flex-direction: column; /* برای اینکه متن‌ها زیر هم قرار بگیرند */
+            flex-direction: column;
             justify-content: center;
         }
 
@@ -95,6 +100,7 @@
             margin-top: 10px;
         }
 
+        /* --- ردیف‌های کارت‌ها --- */
         .cards-row {
             display: flex;
             gap: 2.5vh;
@@ -104,6 +110,7 @@
 
         .gif-box {
             width: 15%;
+            background-color: #f8fafc; /* پس‌زمینه ملایم برای کادر گیف */
         }
 
         .course-box {
@@ -117,6 +124,7 @@
             overflow: hidden;
         }
 
+        /* افکت‌های زیبا برای کارت‌های آموزشی */
         .course-box:hover {
             transform: translateY(-8px);
             box-shadow: 0 15px 30px rgba(99, 102, 241, 0.2);
@@ -140,6 +148,7 @@
             transform: scaleX(1);
         }
 
+        /* --- واکنش‌گرایی برای موبایل --- */
         @media (max-width: 768px) {
             body { overflow: auto; padding: 10px; }
             .container { height: auto; }
@@ -161,11 +170,11 @@
         <!-- ردیف اول: عکس پروفایل و متن خوش‌آمدگویی -->
         <div class="header-row">
             <div class="box profile-box">
+                <!-- عکس با ویژگی contain نمایش داده می‌شود تا کامل دیده شود -->
                 <img src="1.jpg" alt="عکس احمد مهرجو">
             </div>
             <div class="box welcome-box">
                 به سایت احمد مهرجو خوش آمدید
-                <!-- متن اصلاح شده با <br> برای رفتن به خط بعد -->
                 <span>مدرس : دانشگاه اسلامشهر خوش تمدید</span>
             </div>
         </div>
@@ -178,7 +187,6 @@
             <a href="#" class="box course-box">آموزش ساخت گیف</a>
             <a href="#" class="box course-box">آموزش ساخت تصویر</a>
             <a href="#" class="box course-box">آموزش ساخت ویدیو</a>
-            <!-- اصلاح شد: گفتار -->
             <a href="#" class="box course-box">آموزش تبدیل متن به گفتار</a>
         </div>
 
