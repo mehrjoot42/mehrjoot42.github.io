@@ -1,11 +1,38 @@
 <!DOCTYPE html>
 <html lang="fa" dir="rtl">
-  <head>
+<head>
     <meta charset="UTF-8">
     <title>سایت شخصی من</title>
-  </head>
-  <body>
+    <style>
+        body {
+            font-family: Tahoma, sans-serif;
+            text-align: center;
+            background-color: #f0f8ff; /* یک رنگ پس‌زمینه آبی روشن */
+            padding-top: 50px;
+        }
+        .moving-text {
+            color: #d32f2f; /* رنگ قرمز برای متن متحرک */
+            font-size: 24px;
+            font-weight: bold;
+            background-color: #fff;
+            padding: 10px;
+            border-radius: 10px;
+            border: 2px dashed #d32f2f;
+            margin-bottom: 30px;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- این تگ باعث حرکت متن می‌شود -->
+    <marquee class="moving-text" direction="right" scrollamount="5">
+        ⚡ به سایت من خوش آمدید! این متن در حال حرکت است ⚡
+    </marquee>
+
+    <!-- متن ثابت -->
     <h1>سلام دنیا!</h1>
-    <p>این اولین سایت من است که با GitHub Pages ساخته شده.</p>
-  </body>
+    <p>این سایت با استفاده از GitHub Pages ساخته شده است.</p>
+    <p>اینجا می‌توانید هر چیزی که دوست دارید بنویسید.</p>
+
+</body>
 </html>
