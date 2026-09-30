@@ -6,235 +6,126 @@
     <title>سایت احمد مهرجو</title>
     <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;700;900&display=swap" rel="stylesheet">
     <style>
-        /* --- تعریف پالت رنگی --- */
         :root {
             --bg-color: #f0f4f8;
             --card-bg: #ffffff;
             --text-dark: #1e293b;
             --primary: #6366f1;
+            --success: #10b981;
+            --youtube: #ef4444;
             --border-color: #e2e8f0;
         }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Vazirmatn', Tahoma, sans-serif;
-        }
-
         body {
+            font-family: 'Vazirmatn', sans-serif;
             background-color: var(--bg-color);
             color: var(--text-dark);
+            margin: 0;
+            padding: 20px;
             display: flex;
-            justify-content: center;
+            flex-direction: column;
             align-items: center;
             min-height: 100vh;
-            padding: 2vh;
-            overflow-x: hidden;
         }
-
-        .container {
-            width: 100%;
-            max-width: 1400px;
-            display: flex;
-            flex-direction: column;
-            gap: 2.5vh;
-        }
-
-        .box {
-            background-color: var(--card-bg);
-            border-radius: 16px;
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
-            border: 1px solid var(--border-color);
-            display: flex;
-            justify-content: center;
-            align-items: center;
+        .header {
             text-align: center;
-            padding: 15px;
-            overflow: hidden;
-            transition: all 0.3s ease;
+            margin-bottom: 40px;
+            margin-top: 20px;
         }
-
-        .box img {
-            width: 100%;
-            height: 100%;
-            object-fit: contain;
-        }
-
-        /* --- ردیف اول: هدر --- */
-        .header-row {
-            display: flex;
-            gap: 2.5vh;
-            height: 25vh;
-        }
-
-        .profile-box {
-            width: 15%;
-            border: 3px solid var(--primary);
-            background-color: #f8fafc;
-        }
-
-        .welcome-box {
-            flex-grow: 1;
-            font-size: 2vw;
+        .header h1 {
+            font-size: 2rem;
             font-weight: 900;
-            line-height: 1.8;
-            padding: 2vw;
-            color: var(--text-dark);
-            background: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%);
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-        }
-
-        .welcome-box span {
             color: var(--primary);
-            font-size: 1.2vw;
-            font-weight: 700;
-            display: block;
-            margin-top: 10px;
+            margin-bottom: 10px;
         }
-
-        /* --- ردیف‌های کارت‌ها --- */
-        .cards-row {
-            display: flex;
-            gap: 2.5vh;
-            height: 32vh;
+        .header p {
+            font-size: 1.1rem;
+            color: #64748b;
         }
-
-        .gif-box {
-            width: 15%;
-            background-color: #f8fafc;
+        .container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+            max-width: 900px;
+            width: 100%;
         }
-
-        .course-box {
-            flex: 1;
-            font-size: 1.5vw;
-            font-weight: 700;
+        .card {
+            background-color: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            padding: 30px 20px;
+            text-align: center;
             text-decoration: none;
             color: var(--text-dark);
-            cursor: pointer;
-            position: relative;
-            overflow: hidden;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+            font-weight: 700;
+            font-size: 1.2rem;
         }
-
-        .course-box:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 15px 30px rgba(99, 102, 241, 0.2);
-            border-color: var(--primary);
-            color: var(--primary);
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
         }
-
-        .course-box::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 5px;
-            background: var(--primary);
-            transform: scaleX(0);
-            transition: transform 0.3s ease;
+        .card.new-version {
+            border-top: 4px solid var(--success);
         }
-
-        .course-box:hover::before {
-            transform: scaleX(1);
+        .card.new-version:hover {
+            border-color: var(--success);
+            color: var(--success);
         }
-
-        /* ========================================= */
-        /* --- تنظیمات موبایل (ریسپانسیو) --- */
-        /* ========================================= */
-        @media (max-width: 768px) {
-            body {
-                padding: 15px;
-                align-items: flex-start;
-            }
-
+        .card.video {
+            border-top: 4px solid var(--youtube);
+        }
+        .card.video:hover {
+            border-color: var(--youtube);
+            color: var(--youtube);
+        }
+        .card.old-version {
+            border-top: 4px solid #94a3b8;
+        }
+        .card.old-version:hover {
+            border-color: #94a3b8;
+            color: #64748b;
+        }
+        .icon {
+            font-size: 2.5rem;
+        }
+        @media (max-width: 600px) {
             .container {
-                gap: 15px;
-            }
-
-            .header-row {
-                flex-direction: column;
-                height: auto;
-                gap: 15px;
-            }
-
-            .profile-box {
-                width: 100%;
-                height: 200px;
-            }
-
-            .welcome-box {
-                font-size: 20px;
-                padding: 20px;
-                line-height: 1.6;
-            }
-
-            .welcome-box span {
-                font-size: 16px;
-                margin-top: 8px;
-            }
-
-            .cards-row {
-                flex-direction: column;
-                height: auto;
-                gap: 15px;
-            }
-
-            .gif-box {
-                width: 100%;
-                height: 200px;
-            }
-
-            .course-box {
-                width: 100%;
-                height: 80px;
-                font-size: 18px;
+                grid-template-columns: 1fr;
             }
         }
     </style>
 </head>
 <body>
 
+    <div class="header">
+        <h1>به سایت احمد مهرجو خوش آمدید</h1>
+        <p>مدرس : دانشگاه اسلامشهر خوش آمدید</p>
+    </div>
+
     <div class="container">
-        
-        <!-- ردیف اول: عکس پروفایل و متن خوش‌آمدگویی -->
-        <div class="header-row">
-            <div class="box profile-box">
-                <img src="1.jpg" alt="عکس احمد مهرجو">
-            </div>
-            <div class="box welcome-box">
-                به سایت احمد مهرجو خوش آمدید
-                <span>مدرس : دانشگاه اسلامشهر خوش تمدید</span>
-            </div>
-        </div>
+        <!-- دکمه ۱: دانلود نسخه جدید -->
+        <a href="لینک_فایل_EXE_جدید_را_اینجا_بگذارید" class="card new-version">
+            <span class="icon">⬇️</span>
+            <span>دانلود نسخه جدید</span>
+        </a>
 
-        <!-- ردیف دوم: گیف اول و 4 کارت آموزشی -->
-        <div class="cards-row">
-            <div class="box gif-box">
-                <img src="2.jpg" alt="فایل متحرک 2">
-            </div>
-            <a href="#" class="box course-box">آموزش ساخت گیف</a>
-            <a href="#" class="box course-box">آموزش ساخت تصویر</a>
-            <!-- دکمه لینک‌دار به فایل EXE (دانلود مستقیم) -->
-            <a href="LaTeX2Word_Setup_v1.0.exe" download class="box course-box">آموزش ساخت ویدیو</a>
-            <!-- دکمه تغییر یافته: دانلود تبدیل لتکس به وُرد -->
-            <a href="LaTeX2Word_Setup_v1.0.exe" download class="box course-box">دانلود تبدیل لتکس به وُرد</a>
-        </div>
+        <!-- دکمه ۲: ویدیو آموزشی نسخه جدید -->
+        <a href="https://www.youtube.com/watch?v=DUrfPFFD6wU" target="_blank" class="card video">
+            <span class="icon">▶️</span>
+            <span>ویدیو آموزشی نسخه جدید</span>
+        </a>
 
-        <!-- ردیف سوم: گیف دوم و 4 کارت آموزشی -->
-        <div class="cards-row">
-            <div class="box gif-box">
-                <img src="1.gif" alt="فایل متحرک 1">
-            </div>
-            <a href="#" class="box course-box">آموزش تبدیل گفتار به متن</a>
-            <a href="#" class="box course-box">آموزش ساخت تصویر</a>
-            <!-- دکمه لینک‌دار به فایل EXE (دانلود مستقیم) -->
-            <a href="LaTeX2Word_Setup_v1.0.exe" download class="box course-box">آموزش ساخت ویدیو</a>
-            <a href="#" class="box course-box">آموزش پریمریر</a>
-        </div>
-
+        <!-- دکمه ۳: دانلود نسخه قبلی -->
+        <a href="لینک_فایل_قدیمی_را_اینجا_بگذارید" class="card old-version">
+            <span class="icon">📁</span>
+            <span>دانلود نسخه قبلی</span>
+        </a>
     </div>
 
 </body>
